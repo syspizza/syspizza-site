@@ -139,7 +139,7 @@ const carrinho=[];
 let bordasDisponiveis=[];
 function valorPizza(p,tamanho){return dinheiro(tamanho==='GRANDE'?p.grande:p.broto)}
 function abrirEtapa(titulo,conteudo){document.getElementById('order-title').textContent=titulo;document.getElementById('order-content').replaceChildren();document.getElementById('order-content').append(conteudo);document.getElementById('order-overlay').hidden=false;}
-// V1.62: preserva propaganda ao retornar do WhatsApp.
+// V1.63: preserva propaganda ao retornar do WhatsApp.
 function mostrarForaAreaEntrega(r,voltar){
  ocultarCalculoBloqueante();
  const w=document.createElement('div');
@@ -190,7 +190,7 @@ function atualizarCarrinho(){
  if(!carrinho.length)cart.textContent='Seu carrinho está vazio.';
  document.getElementById('cart-total').textContent='Subtotal: '+reais(carrinho.reduce((s,x)=>s+(x.unitario+valorBordas(x))*x.quantidade,0));
 }
-// V1.62 — bordas múltiplas por pizza; mantém leitura de pedidos antigos com borda única.
+// V1.63 — bordas múltiplas por pizza; mantém leitura de pedidos antigos com borda única.
 function bordasDoItem(x){
  if(Array.isArray(x.bordas))return x.bordas;
  return x.borda?[x.borda]:[];
@@ -487,15 +487,15 @@ function formatarItemWhatsApp(x){
  }else{
   linhas.push(qtd+' '+nome+' '+reais(precoProduto));
  }
- // V1.62: inclui TODAS as bordas selecionadas (e mantém pedidos antigos).
+ // V1.63: inclui TODAS as bordas selecionadas (e mantém pedidos antigos).
  bordasDoItem(x).forEach(function(b){
   var nomeBorda=String(b.nome||'').trim().toUpperCase();
-  if(nomeBorda)linhas.push('BORDA '+nomeBorda+' '+reais(qtd*(Number(b.preco)||0)));
+  if(nomeBorda)linhas.push(nomeBorda+' '+reais(qtd*(Number(b.preco)||0)));
  });
  return linhas.join('\n')+'\n------------------------------------------\n';
 }
-// V1.62 - a propaganda ocupa a viewport ANTES da abertura do WhatsApp.
-// V1.62: anuncio incorporado, sem iframe nem pagina externa.
+// V1.63 - a propaganda ocupa a viewport ANTES da abertura do WhatsApp.
+// V1.63: anuncio incorporado, sem iframe nem pagina externa.
 const CHAVE_PROPAGANDA_083='syspizza_083_pospedido';
 function exibirPropagandaPosPedido(){
  let tela=document.getElementById('propaganda-pospedido-083');
@@ -542,7 +542,7 @@ function exibirPropagandaPosPedido(){
    try{window.close();}catch(_){}
  });
  const rodape=document.createElement('small');
- rodape.textContent='Publicidade • SysPizza Digital V1.62';
+ rodape.textContent='Publicidade • SysPizza Digital V1.63';
  rodape.style.cssText='display:block;margin-top:20px;color:#526779;font-size:11px';
  cartao.append(fundo,marca,titulo,texto,acessar,sair,rodape);
  tela.appendChild(cartao);
@@ -553,7 +553,7 @@ function restaurarPropagandaPosPedido(){
 }
 window.addEventListener('pageshow',restaurarPropagandaPosPedido);
 window.addEventListener('DOMContentLoaded',restaurarPropagandaPosPedido);
-// V1.62: identificador por carrinho, renovado quando o conteúdo do pedido muda.
+// V1.63: identificador por carrinho, renovado quando o conteúdo do pedido muda.
 let ultimoPedido083={assinatura:'',id:''};
 function registrarPedido083(cliente,itens,entrega){
   const subtotal=itens.reduce((s,x)=>s+(Number(x.quantidade)||1)*((Number(x.unitario)||0)+valorBordas(x)),0);
@@ -603,7 +603,7 @@ function enviarPedido(){
   '\n*Total:* '+reais(carrinho.reduce((a,x)=>a+(Number(x.quantidade)||1)*((Number(x.unitario)||0)+valorBordas(x)),0)+entregaCalculada.taxa)+
   '\n\nAguardando confirmação do pedido.';
  const destino='https://wa.me/'+(configPizzaria?.whatsappPedidos||CONFIG_PEDIDOS.whatsappPizzaria)+'?text='+encodeURIComponent(msg);
-  // V1.62: registra um pedido único por tentativa de compra (exceto teste).
+  // V1.63: registra um pedido único por tentativa de compra (exceto teste).
   // O registro é assíncrono e nunca bloqueia a abertura do WhatsApp.
   if(!modoTestePedido){
     try{registrarPedido083(c, carrinho, entregaCalculada);}catch(e){console.warn('Registro de pedido não iniciado',e);}
