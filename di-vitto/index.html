@@ -139,7 +139,7 @@ const carrinho=[];
 let bordasDisponiveis=[];
 function valorPizza(p,tamanho){return dinheiro(tamanho==='GRANDE'?p.grande:p.broto)}
 function abrirEtapa(titulo,conteudo){document.getElementById('order-title').textContent=titulo;document.getElementById('order-content').replaceChildren();document.getElementById('order-content').append(conteudo);document.getElementById('order-overlay').hidden=false;}
-// V1.65: preserva propaganda ao retornar do WhatsApp.
+// V1.66: preserva propaganda ao retornar do WhatsApp.
 function mostrarForaAreaEntrega(r,voltar){
  ocultarCalculoBloqueante();
  const w=document.createElement('div');
@@ -190,7 +190,7 @@ function atualizarCarrinho(){
  if(!carrinho.length)cart.textContent='Seu carrinho está vazio.';
  document.getElementById('cart-total').textContent='Subtotal: '+reais(carrinho.reduce((s,x)=>s+(x.unitario+valorBordas(x))*x.quantidade,0));
 }
-// V1.65 — bordas múltiplas por pizza; mantém leitura de pedidos antigos com borda única.
+// V1.66 — bordas múltiplas por pizza; mantém leitura de pedidos antigos com borda única.
 function bordasDoItem(x){
  if(Array.isArray(x.bordas))return x.bordas;
  return x.borda?[x.borda]:[];
@@ -464,7 +464,7 @@ async function calcularEntregaAntesDoPedido(){
 }
 function confirmarEnvio(){const w=document.createElement('div');const p=document.createElement('p');p.textContent=modoTestePedido?'MODO TESTE: o pedido será preparado para conferência, sem cadastrar cliente nem enviar SMS.':'Pedido pronto. Abra o WhatsApp da pizzaria para conferir e enviar.';w.append(p);if(entregaCalculada?.provisoria){const alerta=document.createElement('p');alerta.textContent='Estamos considerando a taxa mínima provisória de '+reais(entregaCalculada.taxa)+'. A taxa e a disponibilidade da entrega dependem de confirmação pela pizzaria.';alerta.style.cssText='padding:12px;background:#fff4e5;border-radius:10px';w.append(alerta)}const btn=document.createElement('button');btn.className='order-primary';btn.textContent=modoTestePedido?'Visualizar pedido de teste no WhatsApp ↗':'Enviar pedido pelo WhatsApp ↗';btn.onclick=enviarPedido;w.append(btn);if(!modoTestePedido&&configPizzaria?.pix?.chave&&configPizzaria?.pix?.recebedor&&configPizzaria?.pix?.cidade){const botPix=document.createElement('button');botPix.className='order-primary';botPix.style.marginTop='10px';botPix.textContent='Pagar com Pix — QR Code / Copia e Cola';botPix.onclick=abrirPixPedido;w.append(botPix)}abrirEtapa('Finalizar pedido',w)}
 
-// V1.65 — Pix estático EMV/BR Code, mesmo padrão do modelo enviado.
+// V1.66 — Pix estático EMV/BR Code, mesmo padrão do modelo enviado.
 function pixTLV(id,valor){return id+String(valor.length).padStart(2,'0')+valor}
 function pixNormalizarTexto(s,max){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9 .\-]/g,'').trim().toUpperCase().slice(0,max)}
 function pixChaveNormalizada(chave,tipo){
@@ -528,15 +528,15 @@ function formatarItemWhatsApp(x){
  }else{
   linhas.push(qtd+' '+nome+' '+reais(precoProduto));
  }
- // V1.65: inclui TODAS as bordas selecionadas (e mantém pedidos antigos).
+ // V1.66: inclui TODAS as bordas selecionadas (e mantém pedidos antigos).
  bordasDoItem(x).forEach(function(b){
   var nomeBorda=String(b.nome||'').trim().toUpperCase();
   if(nomeBorda)linhas.push(nomeBorda+' '+reais(qtd*(Number(b.preco)||0)));
  });
  return linhas.join('\n')+'\n------------------------------------------\n';
 }
-// V1.65 - a propaganda ocupa a viewport ANTES da abertura do WhatsApp.
-// V1.65: anuncio incorporado, sem iframe nem pagina externa.
+// V1.66 - a propaganda ocupa a viewport ANTES da abertura do WhatsApp.
+// V1.66: anuncio incorporado, sem iframe nem pagina externa.
 const CHAVE_PROPAGANDA_083='syspizza_083_pospedido';
 function exibirPropagandaPosPedido(){
  let tela=document.getElementById('propaganda-pospedido-083');
@@ -583,7 +583,7 @@ function exibirPropagandaPosPedido(){
    try{window.close();}catch(_){}
  });
  const rodape=document.createElement('small');
- rodape.textContent='Publicidade • SysPizza Digital V1.65';
+ rodape.textContent='Publicidade • SysPizza Digital V1.66';
  rodape.style.cssText='display:block;margin-top:20px;color:#526779;font-size:11px';
  cartao.append(fundo,marca,titulo,texto,acessar,sair,rodape);
  tela.appendChild(cartao);
@@ -594,7 +594,7 @@ function restaurarPropagandaPosPedido(){
 }
 window.addEventListener('pageshow',restaurarPropagandaPosPedido);
 window.addEventListener('DOMContentLoaded',restaurarPropagandaPosPedido);
-// V1.65: identificador por carrinho, renovado quando o conteúdo do pedido muda.
+// V1.66: identificador por carrinho, renovado quando o conteúdo do pedido muda.
 let ultimoPedido083={assinatura:'',id:''};
 function registrarPedido083(cliente,itens,entrega){
   const subtotal=itens.reduce((s,x)=>s+(Number(x.quantidade)||1)*((Number(x.unitario)||0)+valorBordas(x)),0);
@@ -644,14 +644,14 @@ function enviarPedido(){
   '\n*Taxa de entrega:* '+reais(entregaCalculada.taxa)+(entregaCalculada.provisoria?' (Sujeita a alteração)\n*ATENÇÃO:* Confirmar taxa de entrega com o cliente':'')+
   '\n*Total:* '+reais(carrinho.reduce((a,x)=>a+(Number(x.quantidade)||1)*((Number(x.unitario)||0)+valorBordas(x)),0)+entregaCalculada.taxa)+
   '\n\nAguardando confirmação do pedido.';
- // V1.65: registra snapshot Pix do pedido antes de disponibilizar o link.
+ // V1.66: registra snapshot Pix do pedido antes de disponibilizar o link.
  if(!modoTestePedido && configPizzaria?.pix?.chave && configPizzaria?.pix?.recebedor && configPizzaria?.pix?.cidade){
    try{
      const tokenPix=registrarPedido083(c,carrinho,entregaCalculada);
      if(tokenPix){
        const urlPix=new URL('pix.html',window.location.href);
        urlPix.searchParams.set('unidade','083');urlPix.searchParams.set('token',tokenPix);
-       msg+='\n\n💚 *PAGAMENTO VIA PIX*\nPara pagar, abra o link abaixo e utilize o QR Code ou Pix Copia e Cola:\n'+urlPix.href+'\n\nConfira o nome do recebedor antes de pagar.';
+       msg+='\n\nPagamento via Pix.\n\nPara pagar, abra o link abaixo e utilize o QR Code ou Pix Copia e Cola.\n\n'+urlPix.href;
      }
    }catch(e){console.warn('Link Pix indisponível',e);}
  }else if(!modoTestePedido){
@@ -724,6 +724,17 @@ function montarConfigAdmin(config){
  pixTipo.value=({'CELULAR':'TELEFONE','E-MAIL':'EMAIL','ALEATÓRIA':'ALEATORIA','EVP':'ALEATORIA','OUTROS':'ALEATORIA'})[tipoExistente]||tipoExistente;
  pixTipoOriginal.replaceWith(pixTipo);
  const pixChave=campo('Chave Pix da pizzaria',config.pix?.chave||'');
+ function orientarChavePix(){
+   if(pixTipo.value==='TELEFONE'){
+     pixChave.placeholder='+5511999999999';
+     pixChave.type='tel';pixChave.inputMode='tel';
+     pixChave.title='Informe +55, DDD e número, sem espaços ou traços';
+   }else{
+     pixChave.placeholder='Informe a chave Pix';pixChave.type='text';
+     pixChave.removeAttribute('inputmode');pixChave.removeAttribute('title');
+   }
+ }
+ pixTipo.addEventListener('change',orientarChavePix);orientarChavePix();
  const pixRecebedor=campo('Nome do recebedor Pix',config.pix?.recebedor||'');
  const pixCidade=campo('Cidade do recebedor Pix',config.pix?.cidade||'');
 
@@ -746,7 +757,10 @@ function montarConfigAdmin(config){
  ADM_DIAS.forEach((dia,n)=>{const bloco=document.createElement('div');bloco.className='adm-day';const t=document.createElement('strong');t.textContent=dia;const grid=document.createElement('div');grid.className='adm-time';const ini=document.createElement('input'),fim=document.createElement('input');ini.type=fim.type='time';ini.className=fim.className='adm-input';ini.value=config.dias?.[n]?.inicio||'';fim.value=config.dias?.[n]?.fim||'';grid.append(ini,fim);bloco.append(t,grid);c.append(bloco);horas.push({inicio:ini,fim})});
  const dica=document.createElement('p');dica.className='adm-hint';dica.textContent='Horários: abertura à esquerda e fechamento à direita. Para não funcionar em um dia, deixe ambos vazios. Horários que passam da meia-noite são aceitos.';c.append(dica);
  const msg=document.createElement('p');msg.className='adm-msg';c.append(msg);
- const btn=document.createElement('button');btn.className='adm-primary';btn.textContent='Salvar na planilha';btn.onclick=async()=>{btn.disabled=true;msg.textContent='Salvando...';try{const tel=whatsappAdm.value.replace(/\D/g,'');if(!/^(?:55)?\d{10,11}$/.test(tel))throw Error('Informe o WhatsApp da pizzaria com DDD (10 ou 11 dígitos).');const r=await chamarClientes('salvarConfigAdmin',{adminToken:admToken,config:{endereco:endereco.value,cep:cep.value,distanciaMaxima:km.value,whatsappPedidos:tel,modoTaxa:escolha.value,taxaFixa:taxaFixa.value,pix:{tipo:pixTipo.value,chave:pixChave.value,recebedor:pixRecebedor.value,cidade:pixCidade.value},faixasEntrega:faixasInputs.map(([inicio,fim,valor])=>({inicio:inicio.value,fim:fim.value,valor:valor.value})),dias:horas.map(x=>({inicio:x.inicio.value,fim:x.fim.value}))}});configPizzaria=r.config;atualizarStatusPizzaria();msg.style.color='#166534';msg.textContent='Configurações salvas com sucesso!'}catch(e){msg.style.color='#a22';msg.textContent=e.message}finally{btn.disabled=false}};c.append(btn);
+ const btn=document.createElement('button');btn.className='adm-primary';btn.textContent='Salvar na planilha';btn.onclick=async()=>{btn.disabled=true;msg.textContent='Salvando...';try{if(pixTipo.value==='TELEFONE' && pixChave.value.trim()){
+   const chaveTel=pixChave.value.trim();
+   if(!/^\+55[1-9]\d{9,10}$/.test(chaveTel))throw Error('Chave Pix por telefone: informe +55, DDD e número, por exemplo +5511999999999.');
+ }const tel=whatsappAdm.value.replace(/\D/g,'');if(!/^(?:55)?\d{10,11}$/.test(tel))throw Error('Informe o WhatsApp da pizzaria com DDD (10 ou 11 dígitos).');const r=await chamarClientes('salvarConfigAdmin',{adminToken:admToken,config:{endereco:endereco.value,cep:cep.value,distanciaMaxima:km.value,whatsappPedidos:tel,modoTaxa:escolha.value,taxaFixa:taxaFixa.value,pix:{tipo:pixTipo.value,chave:pixChave.value,recebedor:pixRecebedor.value,cidade:pixCidade.value},faixasEntrega:faixasInputs.map(([inicio,fim,valor])=>({inicio:inicio.value,fim:fim.value,valor:valor.value})),dias:horas.map(x=>({inicio:x.inicio.value,fim:x.fim.value}))}});configPizzaria=r.config;atualizarStatusPizzaria();msg.style.color='#166534';msg.textContent='Configurações salvas com sucesso!'}catch(e){msg.style.color='#a22';msg.textContent=e.message}finally{btn.disabled=false}};c.append(btn);
  const divisor=document.createElement('hr');divisor.style.cssText='margin:24px 0 14px;border:0;border-top:1px solid #ddd';c.append(divisor);
  const tituloSenha=document.createElement('h3');tituloSenha.textContent='🔐 Alterar senha administrativa';c.append(tituloSenha);
  const senhaAtual=document.createElement('input'),senhaNova=document.createElement('input'),senhaConfirma=document.createElement('input');
