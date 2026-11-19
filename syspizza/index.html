@@ -54,7 +54,7 @@
 </style>
 </head><body><main class="app"><header class="hero"><div class="hero-top"><span class="pill">🍕 SysPizza Digital</span></div><div class="hero-title"><h1>Pizzaria App Delivery</h1><p>Louco por pizza ❤️</p></div></header><div class="intro"><div><strong>Bem-vindo ao nosso cardápio!</strong><p>Escolha seus favoritos e monte seu pedido.</p></div><span class="status" id="status-pizzaria">● Consultando horário...</span></div><nav aria-label="Acesso rápido" class="quick"><a data-cat="PIZZAS" href="#cardapio-digital"><span>🍕</span>Pizzas</a><a data-cat="ESFIHAS" href="#cardapio-digital"><span>🥟</span>Esfihas</a><a data-cat="BEBIDAS" href="#cardapio-digital"><span>🥤</span>Bebidas</a><a href="#" id="atalho-baixar-app" onclick="abrirInstalacaoApp(event)"><span>📲</span>Baixar</a><a href="#mapa-pizzaria"><span>📍</span>Endereço</a></nav><section class="section"><div class="section-head" id="categorias"><h2>Nosso cardápio</h2><small>Escolha uma categoria</small></div><div class="cards"><a class="category pizza" data-cat="PIZZAS" href="#cardapio-digital" id="pizzas"><div><h3>🍕 Pizzas</h3><p>Grande e broto</p></div></a><a class="category esfiha" data-cat="ESFIHAS" href="#cardapio-digital" id="esfihas"><div><h3>🥟 Esfihas</h3><p>Sabores variados</p></div></a><a class="category bebida" data-cat="BEBIDAS" href="#cardapio-digital" id="bebidas"><div><h3>🥤 Bebidas</h3><p>Refrigerantes e mais</p></div></a></div><section class="menu-digital" hidden="" id="cardapio-digital"><div class="menu-head"><div class="panel-title"><h2>🍽️ Cardápio</h2><button class="panel-close" onclick="fecharCardapio()" type="button">✕ Fechar</button></div><p>Escolha uma categoria para visualizar os produtos.</p></div><div class="menu-tabs" id="menu-tabs"><button data-grupo="PIZZAS" onclick="selecionarGrupo('PIZZAS')" type="button">🍕 Pizzas</button><button data-grupo="ESFIHAS" onclick="selecionarGrupo('ESFIHAS')" type="button">🥟 Esfihas</button><button data-grupo="BEBIDAS" onclick="selecionarGrupo('BEBIDAS')" type="button">🥤 Bebidas</button></div><div id="menu-status" role="status"></div><div id="menu-items"></div><div class="panel-actions"><button class="panel-close" onclick="fecharCardapio()" type="button">✕ Fechar cardápio</button></div></section><section id="cart-panel" class="cart-panel" hidden><div class="panel-title"><h2>🛒 Meu carrinho</h2><button class="panel-close" type="button" onclick="fecharCarrinho()">✕ Fechar</button></div><div id="cart-lines"></div><div id="cart-total" class="cart-total"></div><div class="order-row"><button class="order-back" type="button" onclick="continuarComprando()">＋ Continuar comprando</button><button class="order-primary" type="button" onclick="perguntarObservacao()">Finalizar pedido →</button></div></section>
 <div id="order-overlay" class="order-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="order-title"><div class="order-sheet"><div class="panel-title"><h2 id="order-title">Montar pedido</h2><button class="panel-close" type="button" onclick="fecharPedido()">✕</button></div><div id="order-content"></div></div></div>
-<section class="map-panel" hidden="" id="mapa-pizzaria"><div class="panel-title"><h2>📍 Nossa localização</h2><button class="panel-close" onclick="fecharMapa()" type="button">✕ Fechar</button></div><p>Endereço em configuração</p><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="about:blank" title="Mapa da Pizzaria App Delivery"></iframe><a class="map-link" href="#" rel="noopener noreferrer" target="_blank">Abrir rota no Google Maps ↗</a><div class="panel-actions"><button class="panel-close" onclick="fecharMapa()" type="button">✕ Fechar mapa</button></div></section><section aria-label="Informações da pizzaria" class="section contact"><h2>Pizzaria App Delivery</h2><p>☎️ <a href="#">Contato em configuração</a> | <a href="#">Contato em configuração</a> | <a href="tel:+">11 97629-8698</a></p><p>📲 WhatsApp <a href="https://wa.me/" rel="noopener noreferrer" target="_blank">11 97629-8698</a></p><p><a href="#" rel="noopener noreferrer" target="_blank">Endereço em configuração<br/></a></p><p>Instagram: <a href="#" rel="noopener noreferrer" target="_blank">@appdelivery</a></p><div class="horarios-divitto"><h3>Aberto diariamente</h3><p>Terça à Quinta: 18h00 às 22h30</p><p>Sexta e Sábado: 18h00 às 23h30</p><p>Domingo: 18h00 às 22h30</p></div></section><p class="footer-note">Desenvolvido com ❤️ por SysPizza Digital<span style="display:block;margin-top:5px">WhatsApp 11 94446-3720</span><span style="display:block;margin-top:5px"><a href="https://www.syspizza.com.br" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline">www.syspizza.com.br</a></span><span style="display:block;margin-top:5px">Versão 1.70</span><span style="display:block;margin-top:8px"><button type="button" id="admin-gear" onclick="abrirAdmin()" title="Configurações da pizzaria" aria-label="Configurações da pizzaria">⚙️</button></span></p></section></main><div class="bottom bottom-publicidade" aria-label="Publicidade de planos de internet"><div class="pub-wifi" aria-hidden="true">📶</div><div class="pub-texto"><strong>Sua internet está lenta?</strong><small>Conheça planos de banda larga na sua região.</small></div><a class="pub-botao" href="https://wa.me/5511944463720?text=Ol%C3%A1%21%20%F0%9F%98%8A%0A%0AVi%20o%20an%C3%BAncio%20de%20voc%C3%AAs%20no%20aplicativo%20da%20pizzaria%20e%20gostaria%20de%20conhecer%20os%20planos%20de%20internet%20banda%20larga%20dispon%C3%ADveis%20para%20minha%20regi%C3%A3o.%0A%0APoderiam%20me%20informar%20os%20valores%2C%20velocidades%20e%20condi%C3%A7%C3%B5es%20de%20instala%C3%A7%C3%A3o%3F%0A%0AAguardo%20atendimento.%20Obrigado%21" target="_blank" rel="noopener noreferrer" aria-label="Consultar planos de internet pelo WhatsApp">Consultar planos</a></div><div aria-labelledby="dialog-title" aria-modal="true" class="modal" id="modal" role="dialog"><div class="dialog"><h2 id="dialog-title"></h2><p id="dialog-message"></p><button onclick="closeModal()">Entendi</button></div></div><div class="adm-backdrop" id="adm-backdrop" hidden><div class="adm-dialog" role="dialog" aria-modal="true" aria-labelledby="adm-title"><div class="adm-top"><h2 id="adm-title">⚙️ Administração · 000</h2><button type="button" onclick="fecharAdmin()" aria-label="Fechar">✕</button></div><div id="adm-content"></div></div></div><div id="modal-instalar-app" role="dialog" aria-modal="true" aria-labelledby="titulo-instalar-app" style="display:none;position:fixed;inset:0;background:#0009;z-index:99999;align-items:center;justify-content:center;padding:18px" onclick="if(event.target===this)fecharInstalacaoApp()"><div style="width:min(100%,390px);max-height:90vh;overflow:auto;background:white;border-radius:20px;padding:22px;box-shadow:0 12px 40px #0004;font-family:system-ui,Arial,sans-serif;color:#222"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><strong id="titulo-instalar-app" style="font-size:21px">Instalar Pizzaria App Delivery</strong><button type="button" aria-label="Fechar" onclick="fecharInstalacaoApp()" style="border:0;background:#f3f3f3;border-radius:10px;padding:8px 12px;font-size:20px">×</button></div><div style="display:flex;align-items:center;gap:14px;margin:20px 0"><img src="./app-delivery-192.png" width="76" height="76" alt="Ícone App Delivery" style="border-radius:17px"><div>Adicione o aplicativo à tela inicial do seu celular para acessar a pizzaria mais rápido.</div></div><div id="instrucoes-instalar-app" style="line-height:1.6"></div><button id="botao-instalar-app" type="button" onclick="executarInstalacaoApp()" style="display:none;width:100%;margin-top:18px;background:#df2727;color:white;border:0;border-radius:12px;padding:14px;font-weight:700">Instalar aplicativo</button><button type="button" onclick="fecharInstalacaoApp()" style="width:100%;margin-top:10px;background:#f1f1f1;color:#222;border:0;border-radius:12px;padding:12px">Fechar</button></div></div><script>function show(t,m){document.getElementById('dialog-title').textContent=t;document.getElementById('dialog-message').textContent=m;document.getElementById('modal').classList.add('open');return false}function closeModal(){document.getElementById('modal').classList.remove('open')}document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});</script><script>
+<section class="map-panel" hidden="" id="mapa-pizzaria"><div class="panel-title"><h2>📍 Nossa localização</h2><button class="panel-close" onclick="fecharMapa()" type="button">✕ Fechar</button></div><p id="endereco-mapa">Carregando endereço...</p><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="about:blank" title="Mapa da Pizzaria App Delivery"></iframe><a class="map-link" href="#" rel="noopener noreferrer" target="_blank">Abrir rota no Google Maps ↗</a><div class="panel-actions"><button class="panel-close" onclick="fecharMapa()" type="button">✕ Fechar mapa</button></div></section><section aria-label="Informações da pizzaria" class="section contact"><h2>Pizzaria App Delivery</h2><p>☎️ <a href="#">Contato em configuração</a> | <a href="#">Contato em configuração</a> | <a href="tel:+">11 97629-8698</a></p><p>📲 WhatsApp <a href="https://wa.me/" rel="noopener noreferrer" target="_blank">11 97629-8698</a></p><p><a href="#" rel="noopener noreferrer" target="_blank">Endereço em configuração<br/></a></p><p>Instagram: <a href="#" rel="noopener noreferrer" target="_blank">@appdelivery</a></p><div class="horarios-divitto"><h3>Aberto diariamente</h3><p>Terça à Quinta: 18h00 às 22h30</p><p>Sexta e Sábado: 18h00 às 23h30</p><p>Domingo: 18h00 às 22h30</p></div></section><p class="footer-note">Desenvolvido com ❤️ por SysPizza Digital<span style="display:block;margin-top:5px">WhatsApp 11 94446-3720</span><span style="display:block;margin-top:5px"><a href="https://www.syspizza.com.br" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline">www.syspizza.com.br</a></span><span style="display:block;margin-top:5px">Versão 1.71</span><span style="display:block;margin-top:8px"><button type="button" id="admin-gear" onclick="abrirAdmin()" title="Configurações da pizzaria" aria-label="Configurações da pizzaria">⚙️</button></span></p></section></main><div class="bottom bottom-publicidade" aria-label="Publicidade de planos de internet"><div class="pub-wifi" aria-hidden="true">📶</div><div class="pub-texto"><strong>Sua internet está lenta?</strong><small>Conheça planos de banda larga na sua região.</small></div><a class="pub-botao" href="https://wa.me/5511944463720?text=Ol%C3%A1%21%20%F0%9F%98%8A%0A%0AVi%20o%20an%C3%BAncio%20de%20voc%C3%AAs%20no%20aplicativo%20da%20pizzaria%20e%20gostaria%20de%20conhecer%20os%20planos%20de%20internet%20banda%20larga%20dispon%C3%ADveis%20para%20minha%20regi%C3%A3o.%0A%0APoderiam%20me%20informar%20os%20valores%2C%20velocidades%20e%20condi%C3%A7%C3%B5es%20de%20instala%C3%A7%C3%A3o%3F%0A%0AAguardo%20atendimento.%20Obrigado%21" target="_blank" rel="noopener noreferrer" aria-label="Consultar planos de internet pelo WhatsApp">Consultar planos</a></div><div aria-labelledby="dialog-title" aria-modal="true" class="modal" id="modal" role="dialog"><div class="dialog"><h2 id="dialog-title"></h2><p id="dialog-message"></p><button onclick="closeModal()">Entendi</button></div></div><div class="adm-backdrop" id="adm-backdrop" hidden><div class="adm-dialog" role="dialog" aria-modal="true" aria-labelledby="adm-title"><div class="adm-top"><h2 id="adm-title">⚙️ Administração · 000</h2><button type="button" onclick="fecharAdmin()" aria-label="Fechar">✕</button></div><div id="adm-content"></div></div></div><div id="modal-instalar-app" role="dialog" aria-modal="true" aria-labelledby="titulo-instalar-app" style="display:none;position:fixed;inset:0;background:#0009;z-index:99999;align-items:center;justify-content:center;padding:18px" onclick="if(event.target===this)fecharInstalacaoApp()"><div style="width:min(100%,390px);max-height:90vh;overflow:auto;background:white;border-radius:20px;padding:22px;box-shadow:0 12px 40px #0004;font-family:system-ui,Arial,sans-serif;color:#222"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><strong id="titulo-instalar-app" style="font-size:21px">Instalar Pizzaria App Delivery</strong><button type="button" aria-label="Fechar" onclick="fecharInstalacaoApp()" style="border:0;background:#f3f3f3;border-radius:10px;padding:8px 12px;font-size:20px">×</button></div><div style="display:flex;align-items:center;gap:14px;margin:20px 0"><img src="./app-delivery-192.png" width="76" height="76" alt="Ícone App Delivery" style="border-radius:17px"><div>Adicione o aplicativo à tela inicial do seu celular para acessar a pizzaria mais rápido.</div></div><div id="instrucoes-instalar-app" style="line-height:1.6"></div><button id="botao-instalar-app" type="button" onclick="executarInstalacaoApp()" style="display:none;width:100%;margin-top:18px;background:#df2727;color:white;border:0;border-radius:12px;padding:14px;font-weight:700">Instalar aplicativo</button><button type="button" onclick="fecharInstalacaoApp()" style="width:100%;margin-top:10px;background:#f1f1f1;color:#222;border:0;border-radius:12px;padding:12px">Fechar</button></div></div><script>function show(t,m){document.getElementById('dialog-title').textContent=t;document.getElementById('dialog-message').textContent=m;document.getElementById('modal').classList.add('open');return false}function closeModal(){document.getElementById('modal').classList.remove('open')}document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});</script><script>
 // Cole abaixo a URL do Web App do Google Apps Script (terminada em /exec).
 const URL_GOOGLE_SCRIPT = 'https://script.google.com/macros/s/AKfycbyB_pSqFQn3Jy4kTuIUvAYkIDl5hEYloH7_dXiF6vSXwRy_jSkWsTw6pPsU367VUsKSJA/exec';
 let produtos = [];
@@ -107,7 +107,26 @@ function selecionarGrupo(cat){
 }
 function fecharCardapio(){document.getElementById('cardapio-digital').hidden=true;document.getElementById('categorias').scrollIntoView({behavior:'smooth',block:'start'});}
 function fecharMapa(){document.getElementById('mapa-pizzaria').hidden=true;document.getElementById('categorias').scrollIntoView({behavior:'smooth',block:'start'});}
-function mostrarMapa(){fecharCardapioSemRolar();const el=document.getElementById('mapa-pizzaria');el.hidden=false;el.scrollIntoView({behavior:'smooth',block:'start'});}
+function atualizarMapaPizzaria(){
+ const painel=document.getElementById('mapa-pizzaria');
+ const endereco=String(configPizzaria?.endereco||'').trim();
+ const cep=String(configPizzaria?.cep||'').replace(/\D/g,'');
+ const texto=document.getElementById('endereco-mapa');
+ const iframe=painel.querySelector('iframe');
+ const rota=painel.querySelector('.map-link');
+ if(!endereco){
+   texto.textContent='Endereço da pizzaria ainda não cadastrado no painel administrativo.';
+   iframe.hidden=true;iframe.removeAttribute('src');
+   rota.hidden=true;rota.removeAttribute('href');return;
+ }
+ const destino=[endereco,cep.length===8?cep.replace(/(\d{5})(\d{3})/,'$1-$2'):'','Brasil'].filter(Boolean).join(', ');
+ texto.textContent=destino;
+ iframe.hidden=false;
+ iframe.src='https://maps.google.com/maps?q='+encodeURIComponent(destino)+'&output=embed';
+ rota.hidden=false;
+ rota.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(destino);
+}
+function mostrarMapa(){fecharCardapioSemRolar();const el=document.getElementById('mapa-pizzaria');el.hidden=false;atualizarMapaPizzaria();el.scrollIntoView({behavior:'smooth',block:'start'});}
 function fecharCardapioSemRolar(){document.getElementById('cardapio-digital').hidden=true;}
 function mostrarCardapio(cat){
  document.getElementById('mapa-pizzaria').hidden=true;
@@ -144,7 +163,7 @@ const carrinho=[];
 let bordasDisponiveis=[];
 function valorPizza(p,tamanho){return dinheiro(tamanho==='GRANDE'?p.grande:p.broto)}
 function abrirEtapa(titulo,conteudo){document.getElementById('order-title').textContent=titulo;document.getElementById('order-content').replaceChildren();document.getElementById('order-content').append(conteudo);document.getElementById('order-overlay').hidden=false;}
-// V1.70: preserva propaganda ao retornar do WhatsApp.
+// V1.72: preserva propaganda ao retornar do WhatsApp.
 function mostrarForaAreaEntrega(r,voltar){
  ocultarCalculoBloqueante();
  const w=document.createElement('div');
@@ -195,7 +214,7 @@ function atualizarCarrinho(){
  if(!carrinho.length)cart.textContent='Seu carrinho está vazio.';
  document.getElementById('cart-total').textContent='Subtotal: '+reais(carrinho.reduce((s,x)=>s+(x.unitario+valorBordas(x))*x.quantidade,0));
 }
-// V1.70 — bordas múltiplas por pizza; mantém leitura de pedidos antigos com borda única.
+// V1.72 — bordas múltiplas por pizza; mantém leitura de pedidos antigos com borda única.
 function bordasDoItem(x){
  if(Array.isArray(x.bordas))return x.bordas;
  return x.borda?[x.borda]:[];
@@ -308,7 +327,7 @@ function confirmarEnderecoResumido(numero,resumo){
  const endereco=document.createElement('div');endereco.style.cssText='padding:15px;border:1px solid #e5e5e5;border-radius:12px;line-height:1.7;background:#fafafa;white-space:pre-line';
  endereco.textContent=[resumo?.logradouro+', nº '+(resumo?.numero||'###'),resumo?.bairro,resumo?.complemento?'Complemento: '+resumo.complemento:'','CEP: '+(resumo?.cep||'########')].filter(Boolean).join('\n');w.append(endereco);
  const msg=document.createElement('p');msg.setAttribute('aria-live','polite');w.append(msg);
- const btn=document.createElement('button');btn.className='order-primary';btn.textContent='Sim, confirmar endereço';btn.style.marginTop='14px';
+ const btn=document.createElement('button');btn.className='order-primary';btn.textContent='Sim, confirmo';btn.style.marginTop='14px';
  btn.onclick=async()=>{
   btn.disabled=true;alterar.disabled=true;btn.style.backgroundColor='#858585';btn.textContent='Confirmando endereço...';msg.textContent='Consultando os dados da entrega...';
   try{
@@ -318,14 +337,16 @@ function confirmarEnderecoResumido(numero,resumo){
    if(!r.atende){msg.textContent='A disponibilidade da entrega será confirmada pela pizzaria.';return}
    confirmarEnvio();
   }catch(e){msg.textContent='Não foi possível confirmar: '+e.message}
-  finally{btn.disabled=false;alterar.disabled=false;btn.style.backgroundColor='';btn.textContent='Sim, confirmar endereço'}
- };w.append(btn);
- const alterar=document.createElement('button');alterar.type='button';alterar.className='order-back';alterar.style.cssText='margin-top:12px;width:100%';alterar.textContent='Modificar endereço';
+  finally{btn.disabled=false;alterar.disabled=false;btn.style.backgroundColor='';btn.textContent='Sim, confirmo'}
+ };
+ const botoesEndereco=document.createElement('div');botoesEndereco.style.cssText='display:flex;gap:10px;align-items:stretch;margin-top:14px;width:100%';
+ btn.style.cssText='margin:0;flex:1 1 0;min-width:0;padding:12px 6px;font-size:14px;white-space:normal';botoesEndereco.append(btn);
+ const alterar=document.createElement('button');alterar.type='button';alterar.className='order-back';alterar.style.cssText='margin:0;flex:1 1 0;min-width:0;padding:12px 6px;font-size:14px;white-space:normal';alterar.textContent='Modificar';
  alterar.onclick=async()=>{
   alterar.disabled=true;btn.disabled=true;alterar.textContent='Preparando alteração...';
   try{const r=await chamarClientesComLimite('confirmarEnderecoExistente004',{whatsapp:numero});clienteAtual=r.cliente;abrirCadastro(numero,r.cliente,true)}
-  catch(e){msg.textContent='Não foi possível carregar o cadastro: '+e.message;alterar.disabled=false;btn.disabled=false;alterar.textContent='Modificar endereço'}
- };w.append(alterar);
+  catch(e){msg.textContent='Não foi possível carregar o cadastro: '+e.message;alterar.disabled=false;btn.disabled=false;alterar.textContent='Modificar'}
+ };botoesEndereco.append(alterar);w.append(botoesEndereco);
  abrirEtapa('Confirme seu endereço',w);
 }
 // v1.29: modal nao interativo, impede toques repetidos enquanto o servidor responde.
@@ -496,7 +517,7 @@ function confirmarEnvio(){
  abrirEtapa('Finalizar pedido',w);
 }
 
-// V1.70 — Pix estático EMV/BR Code, mesmo padrão do modelo enviado.
+// V1.72 — Pix estático EMV/BR Code, mesmo padrão do modelo enviado.
 function pixTLV(id,valor){return id+String(valor.length).padStart(2,'0')+valor}
 function pixNormalizarTexto(s,max){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9 .\-]/g,'').trim().toUpperCase().slice(0,max)}
 function pixChaveNormalizada(chave,tipo){
@@ -560,15 +581,15 @@ function formatarItemWhatsApp(x){
  }else{
   linhas.push(qtd+' '+nome+' '+reais(precoProduto));
  }
- // V1.70: inclui TODAS as bordas selecionadas (e mantém pedidos antigos).
+ // V1.72: inclui TODAS as bordas selecionadas (e mantém pedidos antigos).
  bordasDoItem(x).forEach(function(b){
   var nomeBorda=String(b.nome||'').trim().toUpperCase();
   if(nomeBorda)linhas.push(nomeBorda+' '+reais(qtd*(Number(b.preco)||0)));
  });
  return linhas.join('\n')+'\n------------------------------------------\n';
 }
-// V1.70 - a propaganda ocupa a viewport ANTES da abertura do WhatsApp.
-// V1.70: anuncio incorporado, sem iframe nem pagina externa.
+// V1.72 - a propaganda ocupa a viewport ANTES da abertura do WhatsApp.
+// V1.72: anuncio incorporado, sem iframe nem pagina externa.
 const CHAVE_PROPAGANDA_000='syspizza_000_pospedido';
 function exibirPropagandaPosPedido(){
  let tela=document.getElementById('propaganda-pospedido-000');
@@ -615,7 +636,7 @@ function exibirPropagandaPosPedido(){
    try{window.close();}catch(_){}
  });
  const rodape=document.createElement('small');
- rodape.textContent='Publicidade • SysPizza Digital V1.70';
+ rodape.textContent='Publicidade • SysPizza Digital V1.72';
  rodape.style.cssText='display:block;margin-top:20px;color:#526779;font-size:11px';
  cartao.append(fundo,marca,titulo,texto,acessar,sair,rodape);
  tela.appendChild(cartao);
@@ -626,7 +647,7 @@ function restaurarPropagandaPosPedido(){
 }
 window.addEventListener('pageshow',restaurarPropagandaPosPedido);
 window.addEventListener('DOMContentLoaded',restaurarPropagandaPosPedido);
-// V1.70: identificador por carrinho, renovado quando o conteúdo do pedido muda.
+// V1.72: identificador por carrinho, renovado quando o conteúdo do pedido muda.
 let ultimoPedido000={assinatura:'',id:''};
 function registrarPedido000(cliente,itens,entrega){
   const subtotal=itens.reduce((s,x)=>s+(Number(x.quantidade)||1)*((Number(x.unitario)||0)+valorBordas(x)),0);
@@ -676,7 +697,7 @@ function enviarPedido(){
   '\n*Taxa de entrega:* '+reais(entregaCalculada.taxa)+(entregaCalculada.provisoria?' (Sujeita a alteração)\n*ATENÇÃO:* Confirmar taxa de entrega com o cliente':'')+
   '\n*Total:* '+reais(carrinho.reduce((a,x)=>a+(Number(x.quantidade)||1)*((Number(x.unitario)||0)+valorBordas(x)),0)+entregaCalculada.taxa)+
   '\n\nAguardando confirmação do pedido.';
- // V1.70: registra snapshot Pix do pedido antes de disponibilizar o link.
+ // V1.72: registra snapshot Pix do pedido antes de disponibilizar o link.
  if(!modoTestePedido && configPizzaria?.pix?.chave && configPizzaria?.pix?.recebedor && configPizzaria?.pix?.cidade){
    try{
      const tokenPix=registrarPedido000(c,carrinho,entregaCalculada);
@@ -827,7 +848,7 @@ function montarConfigAdmin(config){
  c.append(botSenha);
 }
 function atualizarStatusPizzaria(){const el=document.getElementById('status-pizzaria');if(!el)return;const st=configPizzaria?.status;el.textContent=st==='ABERTO'?'● Aberto':st==='FECHADO'?'● Fechado':'● Horário indisponível';el.style.color=st==='ABERTO'?'#15803d':'#b91c1c'}
-async function carregarConfigPizzaria(){try{const r=await fetch(URL_GOOGLE_SCRIPT+'?unidade=000');const j=await r.json();if(j.config){configPizzaria=j.config;atualizarStatusPizzaria()}}catch(e){console.warn('Status indisponível',e)}}
+async function carregarConfigPizzaria(){try{const r=await fetch(URL_GOOGLE_SCRIPT+'?unidade=000');const j=await r.json();if(j.config){configPizzaria=j.config;atualizarStatusPizzaria();atualizarMapaPizzaria()}}catch(e){console.warn('Status indisponível',e)}}
 carregarConfigPizzaria();setInterval(carregarConfigPizzaria,60000);
 
 // SysPizza Digital v1.44 - identificacao por endereco mascarado; instalacao PWA (sem alterar o fluxo de pedidos).

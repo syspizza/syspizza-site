@@ -1,5 +1,5 @@
 // Service worker isolado para Pizzaria App Delivery — 000
-const CACHE = 'syspizza-000-v1.70';
+const CACHE = 'syspizza-000-v1.72';
 const ASSETS = ['./', './index.html', './manifest-000.json', './app-delivery-180.png', './app-delivery-192.png', './app-delivery-512.png'];
 self.addEventListener('install', event => {
  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));

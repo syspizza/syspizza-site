@@ -1,10 +1,10 @@
 {
-  "id": "/000/",
+  "id": "./",
   "name": "Pizzaria App Delivery",
   "short_name": "App Delivery",
   "description": "Pedidos online — Pizzaria App Delivery",
-  "start_url": "/000/",
-  "scope": "/000/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#d62828",
